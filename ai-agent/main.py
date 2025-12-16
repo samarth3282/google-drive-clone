@@ -29,6 +29,32 @@ class ChatRequest(BaseModel):
 def read_root():
     return {"status": "AI Agent is running"}
 
+@app.get("/health")
+def health_check():
+    """Detailed health check to verify all dependencies"""
+    try:
+        # Check if agent is imported
+        from agent import agent_executor
+        
+        # Check environment variables
+        env_vars = {
+            "GOOGLE_API_KEY": "✓" if os.getenv("GOOGLE_API_KEY") else "✗",
+            "NEXT_PUBLIC_APPWRITE_PROJECT": "✓" if os.getenv("NEXT_PUBLIC_APPWRITE_PROJECT") else "✗",
+            "VECTOR_COLLECTION_ID": "✓" if os.getenv("VECTOR_COLLECTION_ID") else "✗",
+            "ALLOWED_ORIGINS": os.getenv("ALLOWED_ORIGINS", "not set"),
+        }
+        
+        return {
+            "status": "healthy",
+            "agent_loaded": True,
+            "environment": env_vars
+        }
+    except Exception as e:
+        return {
+            "status": "error",
+            "error": str(e)
+        }
+
 from fastapi.responses import StreamingResponse
 import json
 
