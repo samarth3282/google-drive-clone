@@ -19,6 +19,11 @@ export async function POST(request: NextRequest) {
 
         // Forward the request to the Python AI backend
         const fastApiUrl = process.env.FASTAPI_URL || "http://localhost:8000";
+        
+        // Debug log (remove after testing)
+        console.log("FASTAPI_URL env var:", process.env.FASTAPI_URL);
+        console.log("Using URL:", fastApiUrl);
+        
         const response = await fetch(`${fastApiUrl}/chat`, {
             method: "POST",
             headers: {
