@@ -65,8 +65,10 @@ export function ChatInterface() {
                 }),
             });
 
-
-            if (!res.ok) throw new Error(res.statusText);
+            if (!res.ok) {
+                const errorData = await res.json().catch(() => ({ error: res.statusText }));
+                throw new Error(errorData.error || `HTTP ${res.status}: ${res.statusText}`);
+            }
 
             // Streaming Logic
             const reader = res.body?.getReader();
@@ -96,10 +98,11 @@ export function ChatInterface() {
             }
 
         } catch (error) {
-            console.error(error);
+            console.error("Chat error:", error);
+            const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
             setMessages((prev) => [
                 ...prev,
-                { role: "ai", content: "Sorry, something went wrong with the agent." },
+                { role: "ai", content: `Error: ${errorMessage}` },
             ]);
         } finally {
             setLoading(false);
