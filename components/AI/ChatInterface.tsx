@@ -55,33 +55,13 @@ export function ChatInterface() {
         setMessages((prev) => [...prev, { role: "user", content: userMsg }]);
 
         try {
-            // Get session token from cookies
-            const sessionToken = document.cookie
-                .split('; ')
-                .find(row => row.startsWith('appwrite-session='))
-                ?.split('=')[1];
-
-            if (!sessionToken) {
-                setMessages((prev) => [
-                    ...prev,
-                    { role: "ai", content: "Session expired. Please log in again." },
-                ]);
-                setLoading(false);
-                return;
-            }
-
             const res = await fetch("http://localhost:8000/chat", {
                 method: "POST",
-                headers: { 
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${sessionToken}`,
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ 
                     message: userMsg,
-                    history: messages.map(m => ({
-                        role: m.role === "user" ? "user" : "ai",
-                        content: m.content
-                    })),
+                    userId: currentUser.$id,
+                    userEmail: currentUser.email,
                 }),
             });
 

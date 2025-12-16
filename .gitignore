@@ -42,3 +42,7 @@ next-env.d.ts
 
 
 /ai-agent/venv
+/ai-agent/__pycache__
+/ai-agent/RAG_IMPROVEMENTS.md
+/ai-agent/PERFORMANCE_IMPROVEMENTS.md
+/ai-agent/CODE_QUALITY_IMPROVEMENTS.md

@@ -1,0 +1,34 @@
+services:
+  # FastAPI AI Agent Service
+  - type: web
+    name: gdrive-ai-agent
+    env: docker
+    dockerfilePath: ./ai-agent/Dockerfile
+    dockerContext: ./ai-agent
+    plan: starter # Free tier - upgrade to paid plan for production
+    envVars:
+      # Appwrite Configuration
+      - key: NEXT_PUBLIC_APPWRITE_ENDPOINT
+        sync: false # Set manually in Render dashboard
+      - key: NEXT_PUBLIC_APPWRITE_PROJECT
+        sync: false
+      - key: NEXT_PUBLIC_APPWRITE_DATABASE
+        sync: false
+      - key: NEXT_PUBLIC_APPWRITE_FILES_COLLECTION
+        sync: false
+      - key: NEXT_PUBLIC_APPWRITE_BUCKET
+        sync: false
+      - key: NEXT_APPWRITE_KEY
+        sync: false
+      
+      # Google AI Configuration
+      - key: GOOGLE_API_KEY
+        sync: false
+      
+      # Vector Collection ID
+      - key: VECTOR_COLLECTION_ID
+        sync: false
+      
+      # CORS - Add your Vercel URL after deployment
+      - key: ALLOWED_ORIGINS
+        value: http://localhost:3000
