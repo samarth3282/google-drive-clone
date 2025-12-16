@@ -18,11 +18,12 @@ export async function POST(request: NextRequest) {
         const body = await request.json();
 
         // Forward the request to the Python AI backend
-        const fastApiUrl = process.env.FASTAPI_URL || "http://localhost:8000";
+        const fastApiUrl = (process.env.FASTAPI_URL || "http://localhost:8000").replace(/\/+$/, "");
         
         // Debug log (remove after testing)
         console.log("FASTAPI_URL env var:", process.env.FASTAPI_URL);
         console.log("Using URL:", fastApiUrl);
+        console.log("Full URL:", `${fastApiUrl}/chat`);
         
         const response = await fetch(`${fastApiUrl}/chat`, {
             method: "POST",
