@@ -55,15 +55,19 @@ export function ChatInterface() {
         setMessages((prev) => [...prev, { role: "user", content: userMsg }]);
 
         try {
-            const res = await fetch("http://localhost:8000/chat", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ 
-                    message: userMsg,
-                    userId: currentUser.$id,
-                    userEmail: currentUser.email,
-                }),
-            });
+            const res = await fetch(
+        (process.env.FASTAPI_URL || "http://localhost:8000") + "/chat",
+        {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+            message: userMsg,
+            userId: currentUser.$id,
+            userEmail: currentUser.email,
+            }),
+        }
+        );
+
 
             if (!res.ok) throw new Error(res.statusText);
 

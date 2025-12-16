@@ -26,7 +26,7 @@ from appwrite.query import Query
 # ... imports ...
 
 # Get vector collection ID from environment variable
-VECTOR_COLLECTION_ID = os.getenv("VECTOR_COLLECTION_ID", "693fe6130028caf71954")
+VECTOR_COLLECTION_ID = os.getenv("VECTOR_COLLECTION_ID", "")
 
 # ... client setup ...
 client = Client()
