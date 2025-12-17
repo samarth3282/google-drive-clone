@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google'
 
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { AccentColorProvider } from "@/contexts/AccentColorContext";
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -31,7 +32,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <AccentColorProvider>
+            {children}
+          </AccentColorProvider>
         </ThemeProvider>
       </body>
     </html>

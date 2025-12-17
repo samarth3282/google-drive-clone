@@ -7,6 +7,11 @@
     @apply scroll-smooth;
   }
 
+  :root {
+    --color-brand: 250 114 117;
+    --color-brand-100: 234 99 101;
+  }
+
   body {
     @apply bg-white dark:bg-dark-100 text-dark-200 dark:text-white min-h-screen transition-colors;
   }
@@ -323,7 +328,7 @@
     @apply flex max-h-[800px] w-full max-w-[580px] flex-col justify-center space-y-6 transition-all lg:h-full lg:space-y-8 !important;
   }
   .form-title {
-    @apply h1 text-center text-light-100 md:text-left !important;
+    @apply h1 text-center text-light-100 md:text-left dark:text-white !important;
   }
   .form-submit-button {
     @apply primary-btn h-[66px] !important;
