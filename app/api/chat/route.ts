@@ -18,6 +18,8 @@ export async function POST(request: NextRequest) {
         const body = await request.json();
 
         // Forward the request to the Python AI backend
+        // Note: LangSmith tracing is handled by the Python agent (LangGraph)
+        // to avoid duplicate traces and ensure proper streaming support
         const fastApiUrl = (process.env.FASTAPI_URL || "http://localhost:8000").replace(/\/+$/, "");
         
         // Debug log (remove after testing)
