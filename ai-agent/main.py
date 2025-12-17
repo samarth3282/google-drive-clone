@@ -73,9 +73,20 @@ import json
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
     try:
-        # Pass user context to the agent
+        # Build message history for context
+        message_history = []
+        for msg in request.history:
+            if msg.get("role") == "user":
+                message_history.append(HumanMessage(content=msg.get("content", "")))
+            elif msg.get("role") == "ai":
+                message_history.append(AIMessage(content=msg.get("content", "")))
+        
+        # Add the current user message
+        message_history.append(HumanMessage(content=request.message))
+        
+        # Pass user context and full message history to the agent
         initial_state = {
-            "messages": [HumanMessage(content=request.message)],
+            "messages": message_history,
             "userId": request.userId,
             "userEmail": request.userEmail,
         }
