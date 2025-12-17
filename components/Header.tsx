@@ -5,6 +5,7 @@ import Search from "@/components/Search";
 import FileUploader from "@/components/FileUploader";
 import { signOutUser } from "@/lib/actions/user.actions";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { AccentColorPicker } from "@/components/AccentColorPicker";
 
 const Header = ({
   userId,
@@ -18,6 +19,7 @@ const Header = ({
       <Search />
       <div className="header-wrapper">
         <FileUploader ownerId={userId} accountId={accountId} />
+        <AccentColorPicker />
         <ThemeToggle />
         <form
           action={async () => {

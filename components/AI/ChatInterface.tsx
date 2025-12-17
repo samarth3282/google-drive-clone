@@ -16,19 +16,24 @@ interface Message {
     timestamp: Date;
 }
 
+interface User {
+    $id: string;
+    email: string;
+}
+
 export function ChatInterface() {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<Message[]>([
         {
             role: "ai",
-            content: "👋 Hi! I'm your AI assistant. I can help you find, rename, organize, or manage your files. Ask me anything!",
+            content: "👋 Hi! I'm your AI agent. I can help you find, rename, organize, or manage your files. Ask me anything!",
             timestamp: new Date(),
         }
     ]);
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(false);
     const [streamingContent, setStreamingContent] = useState("");
-    const [currentUser, setCurrentUser] = useState<any>(null);
+    const [currentUser, setCurrentUser] = useState<User | null>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -59,7 +64,7 @@ export function ChatInterface() {
         if (!currentUser) {
             setMessages((prev) => [
                 ...prev,
-                { role: "ai", content: "Please log in to use the AI assistant.", timestamp: new Date() },
+                { role: "ai", content: "Please log in to use the AI agent.", timestamp: new Date() },
             ]);
             return;
         }
@@ -220,13 +225,13 @@ export function ChatInterface() {
                                             <ReactMarkdown
                                                 remarkPlugins={[remarkGfm]}
                                                 components={{
-                                                    ul: ({ node, ...props }: any) => <ul className="ml-5 list-disc space-y-1" {...props} />,
-                                                    ol: ({ node, ...props }: any) => <ol className="ml-5 list-decimal space-y-1" {...props} />,
-                                                    li: ({ node, ...props }: any) => <li className="leading-relaxed" {...props} />,
-                                                    p: ({ node, ...props }: any) => <p className="leading-relaxed" {...props} />,
-                                                    a: ({ node, ...props }: any) => <a className="text-brand underline hover:text-brand-100" target="_blank" rel="noopener noreferrer" {...props} />,
-                                                    strong: ({ node, ...props }: any) => <strong className="font-semibold text-slate-900" {...props} />,
-                                                    code: ({ node, inline, ...props }: any) => 
+                                                    ul: ({ ...props }: React.HTMLAttributes<HTMLUListElement>) => <ul className="ml-5 list-disc space-y-1" {...props} />,
+                                                    ol: ({ ...props }: React.HTMLAttributes<HTMLOListElement>) => <ol className="ml-5 list-decimal space-y-1" {...props} />,
+                                                    li: ({ ...props }: React.HTMLAttributes<HTMLLIElement>) => <li className="leading-relaxed" {...props} />,
+                                                    p: ({ ...props }: React.HTMLAttributes<HTMLParagraphElement>) => <p className="leading-relaxed" {...props} />,
+                                                    a: ({ ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => <a className="text-brand underline hover:text-brand-100" target="_blank" rel="noopener noreferrer" {...props} />,
+                                                    strong: ({ ...props }: React.HTMLAttributes<HTMLElement>) => <strong className="font-semibold text-slate-900" {...props} />,
+                                                    code: ({ inline, ...props }: React.HTMLAttributes<HTMLElement> & { inline?: boolean }) => 
                                                         inline ? 
                                                         <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-slate-800" {...props} /> :
                                                         <code className="block overflow-x-auto rounded bg-slate-100 p-2 font-mono text-xs" {...props} />
@@ -250,12 +255,12 @@ export function ChatInterface() {
                                         <ReactMarkdown
                                             remarkPlugins={[remarkGfm]}
                                             components={{
-                                                ul: ({ node, ...props }: any) => <ul className="ml-5 list-disc space-y-1" {...props} />,
-                                                ol: ({ node, ...props }: any) => <ol className="ml-5 list-decimal space-y-1" {...props} />,
-                                                li: ({ node, ...props }: any) => <li className="leading-relaxed" {...props} />,
-                                                p: ({ node, ...props }: any) => <p className="leading-relaxed" {...props} />,
-                                                a: ({ node, ...props }: any) => <a className="text-brand underline hover:text-brand-100" target="_blank" rel="noopener noreferrer" {...props} />,
-                                                strong: ({ node, ...props }: any) => <strong className="font-semibold text-slate-900" {...props} />,
+                                                ul: ({ ...props }: React.HTMLAttributes<HTMLUListElement>) => <ul className="ml-5 list-disc space-y-1" {...props} />,
+                                                ol: ({ ...props }: React.HTMLAttributes<HTMLOListElement>) => <ol className="ml-5 list-decimal space-y-1" {...props} />,
+                                                li: ({ ...props }: React.HTMLAttributes<HTMLLIElement>) => <li className="leading-relaxed" {...props} />,
+                                                p: ({ ...props }: React.HTMLAttributes<HTMLParagraphElement>) => <p className="leading-relaxed" {...props} />,
+                                                a: ({ ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => <a className="text-brand underline hover:text-brand-100" target="_blank" rel="noopener noreferrer" {...props} />,
+                                                strong: ({ ...props }: React.HTMLAttributes<HTMLElement>) => <strong className="font-semibold text-slate-900" {...props} />,
                                             }}
                                         >
                                             {streamingContent}
@@ -303,10 +308,10 @@ export function ChatInterface() {
                                         onClick={() => {
                                             setInput(question);
                                             setTimeout(() => {
-                                                handleSubmit(new Event('submit') as any);
+                                                handleSubmit(new Event('submit') as unknown as React.FormEvent);
                                             }, 50);
                                         }}
-                                        className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs text-slate-700 transition-all duration-200 hover:border-brand hover:bg-brand hover:text-white dark:border-light-100/20 dark:bg-dark-100 dark:text-light-200"
+                                        className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1.5 text-xs text-slate-700 transition-all duration-200 hover:scale-105 hover:!border-brand hover:!bg-brand hover:!text-white dark:border-light-100/20 dark:bg-dark-100 dark:text-light-200"
                                     >
                                         {question}
                                     </button>
