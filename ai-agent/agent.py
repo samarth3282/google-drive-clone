@@ -13,6 +13,12 @@ from rag import process_file_for_search, ask_file_question
 
 load_dotenv(dotenv_path="../.env.local")
 
+# Configure LangSmith tracing
+os.environ["LANGCHAIN_TRACING_V2"] = os.getenv("LANGCHAIN_TRACING_V2", "false")
+os.environ["LANGCHAIN_ENDPOINT"] = os.getenv("LANGCHAIN_ENDPOINT", "https://api.smith.langchain.com")
+os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY", "")
+os.environ["LANGCHAIN_PROJECT"] = os.getenv("LANGCHAIN_PROJECT", "gdrive-clone")
+
 # Define Agent State
 class AgentState(TypedDict):
     messages: Annotated[List[BaseMessage], add_messages]

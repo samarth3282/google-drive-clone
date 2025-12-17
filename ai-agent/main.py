@@ -7,6 +7,18 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+# Configure LangSmith (same as agent.py for consistency)
+os.environ["LANGCHAIN_TRACING_V2"] = os.getenv("LANGCHAIN_TRACING_V2", "false")
+os.environ["LANGCHAIN_ENDPOINT"] = os.getenv("LANGCHAIN_ENDPOINT", "https://api.smith.langchain.com")
+os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY", "")
+os.environ["LANGCHAIN_PROJECT"] = os.getenv("LANGCHAIN_PROJECT", "gdrive-clone")
+
+# Print tracing status on startup
+if os.getenv("LANGCHAIN_TRACING_V2") == "true":
+    print(f"🔍 LangSmith tracing enabled - Project: {os.getenv('LANGCHAIN_PROJECT')}")
+else:
+    print("ℹ️  LangSmith tracing disabled")
+
 # Get allowed origins from environment variable
 allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
 
@@ -68,9 +80,22 @@ async def chat_endpoint(request: ChatRequest):
             "userEmail": request.userEmail,
         }
         
+        # Configure LangSmith metadata for this request
+        langsmith_config = None
+        if os.getenv("LANGCHAIN_TRACING_V2") == "true":
+            langsmith_config = {
+                "metadata": {
+                    "userId": request.userId,
+                    "userEmail": request.userEmail,
+                    "message_preview": request.message[:100]  # First 100 chars
+                },
+                "tags": ["chat-endpoint", "gdrive-clone"]
+            }
+        
         async def event_stream():
             # Use astream_events to catch token generation
-            async for event in agent_executor.astream_events(initial_state, version="v1"):
+            config = {"configurable": langsmith_config} if langsmith_config else {}
+            async for event in agent_executor.astream_events(initial_state, version="v1", config=config):
                 kind = event["event"]
                 
                 # Check for LLM streaming events from the 'chatbot' node (or relevant model call)
