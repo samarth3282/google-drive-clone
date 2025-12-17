@@ -78,6 +78,10 @@ export function ChatInterface() {
                     message: userMsg,
                     userId: currentUser.$id,
                     userEmail: currentUser.email,
+                    history: messages.map(m => ({
+                        role: m.role,
+                        content: m.content
+                    })),
                 }),
             });
 
