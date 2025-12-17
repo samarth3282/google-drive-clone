@@ -38,7 +38,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
       <nav className="sidebar-nav">
         <ul className="flex flex-1 flex-col gap-6">
           {navItems.map(({ url, name, icon }) => (
-            <Link key={name} href={url} className="lg:w-full">
+            <Link key={name} href={url} className="lg:w-full" prefetch={true}>
               <li
                 className={cn(
                   "sidebar-nav-item",
@@ -78,9 +78,9 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
           height={44}
           className="sidebar-user-avatar"
         />
-        <div className="hidden lg:block">
-          <p className="subtitle-2 capitalize">{fullName}</p>
-          <p className="caption">{email}</p>
+        <div className="hidden overflow-hidden lg:block">
+          <p className="subtitle-2 truncate capitalize">{fullName}</p>
+          <p className="caption truncate">{email}</p>
         </div>
       </div>
     </aside>
