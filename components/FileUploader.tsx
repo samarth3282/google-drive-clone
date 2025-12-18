@@ -84,7 +84,7 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
       </Button>
       {files.length > 0 && (
         <ul className="uploader-preview-list">
-          <h4 className="h4 text-light-100">Uploading</h4>
+          <h4 className="h4 text-light-100 dark:text-white">Uploading</h4>
 
           {files.map((file, index) => {
             const { type, extension } = getFileType(file.name);
@@ -118,6 +118,7 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
                   height={24}
                   alt="Remove"
                   onClick={(e) => handleRemoveFile(e, file.name)}
+                  className="cursor-pointer dark:brightness-0 dark:invert"
                 />
               </li>
             );
