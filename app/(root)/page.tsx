@@ -8,7 +8,7 @@ import { FormattedDateTime } from "@/components/FormattedDateTime";
 import { Thumbnail } from "@/components/Thumbnail";
 // import { Separator } from "@/components/ui/separator";
 import { getFiles, getTotalSpaceUsed } from "@/lib/actions/file.actions";
-import { getUsageSummary } from "@/lib/utils";
+import { getUsageSummary, constructAuthenticatedFileUrl } from "@/lib/utils";
 import { SummaryCard } from "@/components/SummaryCard";
 
 const Dashboard = async () => {
@@ -48,7 +48,7 @@ const Dashboard = async () => {
           <ul className="mt-5 flex flex-col gap-5">
             {files.documents.map((file: Models.Document) => (
               <Link
-                href={file.url}
+                href={constructAuthenticatedFileUrl(file.$id)}
                 target="_blank"
                 className="flex items-center gap-3 border-b border-light-300 pb-5 last:border-b-0 last:pb-0 dark:border-light-100/20"
                 key={file.$id}
@@ -57,6 +57,7 @@ const Dashboard = async () => {
                   type={file.type}
                   extension={file.extension}
                   url={file.url}
+                  fileId={file.$id}
                 />
 
                 <div className="recent-file-details">

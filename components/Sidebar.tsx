@@ -6,6 +6,7 @@ import { navItems } from "@/constants";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { DynamicLogo } from "@/components/DynamicLogo";
+import { useAccentColor, accentColors } from "@/contexts/AccentColorContext";
 
 interface Props {
   fullName: string;
@@ -15,6 +16,8 @@ interface Props {
 
 const Sidebar = ({ fullName, avatar, email }: Props) => {
   const pathname = usePathname();
+  const { accentColor } = useAccentColor();
+  const currentColor = accentColors[accentColor];
 
   return (
     <aside className="sidebar">
@@ -50,13 +53,22 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
         </ul>
       </nav>
 
-      <Image
-        src="/assets/images/files-2.png"
-        alt="logo"
-        width={506}
-        height={418}
-        className="w-full"
-      />
+      <div className="relative h-[250px] w-full">
+        <div 
+          className="absolute inset-x-0 bottom-0 h-[140px] rounded-[30px] transition-colors duration-300"
+          style={{ backgroundColor: currentColor.hex }}
+        />
+        <div className="relative flex size-full items-end justify-center pb-4">
+          <Image
+            src="/assets/images/files.png"
+            alt="logo"
+            width={513}
+            height={513}
+            className="h-auto w-[75%] object-contain"
+            quality={100}
+          />
+        </div>
+      </div>
 
       <div className="sidebar-user-info">
         <Image

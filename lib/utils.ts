@@ -182,6 +182,15 @@ export const constructDownloadUrl = (bucketFileId: string) => {
   return `${process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT}/storage/buckets/${process.env.NEXT_PUBLIC_APPWRITE_BUCKET}/files/${bucketFileId}/download?project=${process.env.NEXT_PUBLIC_APPWRITE_PROJECT}`;
 };
 
+// Construct authenticated file URLs via API route
+export const constructAuthenticatedFileUrl = (fileId: string) => {
+  return `/api/files/${fileId}?action=view`;
+};
+
+export const constructAuthenticatedDownloadUrl = (fileId: string) => {
+  return `/api/files/${fileId}?action=download`;
+};
+
 // DASHBOARD UTILS
 export const getUsageSummary = (totalSpace: any) => {
   return [

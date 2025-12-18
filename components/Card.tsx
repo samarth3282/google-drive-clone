@@ -1,18 +1,21 @@
 import { Models } from "node-appwrite";
 import Link from "next/link";
 import Thumbnail from "@/components/Thumbnail";
-import { convertFileSize } from "@/lib/utils";
+import { convertFileSize, constructAuthenticatedFileUrl } from "@/lib/utils";
 import FormattedDateTime from "@/components/FormattedDateTime";
 import ActionDropdown from "@/components/ActionDropdown";
 
 const Card = ({ file }: { file: Models.Document }) => {
+  const fileUrl = constructAuthenticatedFileUrl(file.$id);
+  
   return (
-    <Link href={file.url} target="_blank" className="file-card">
+    <Link href={fileUrl} target="_blank" className="file-card">
       <div className="flex justify-between">
         <Thumbnail
           type={file.type}
           extension={file.extension}
           url={file.url}
+          fileId={file.$id}
           className="!size-20"
           imageClassName="!size-11"
         />

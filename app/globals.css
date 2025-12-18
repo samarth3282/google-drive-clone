@@ -287,13 +287,13 @@
     @apply body-2 shad-no-focus h-[52px] w-full rounded-full border dark:border-light-100/20 dark:bg-dark-200 dark:text-white px-4 shadow-drop-1 !important;
   }
   .delete-confirmation {
-    @apply text-center text-light-100 !important;
+    @apply text-center text-light-100 dark:text-white !important;
   }
   .delete-file-name {
     @apply font-medium text-brand-100 !important;
   }
   .modal-cancel-button {
-    @apply h-[52px] flex-1 rounded-full bg-white text-light-100 hover:bg-transparent !important;
+    @apply h-[52px] flex-1 rounded-full bg-white text-light-100 hover:bg-transparent dark:hover:bg-white/70 dark:hover:text-black !important;
   }
   .modal-submit-button {
     @apply primary-btn !mx-0 h-[52px] w-full flex-1 !important;
@@ -304,7 +304,7 @@
     @apply !mb-1 flex items-center gap-3 rounded-xl border border-light-200/40 bg-light-400/50 p-3 !important;
   }
   .file-details-label {
-    @apply body-2 w-[30%] text-light-100 !important;
+    @apply body-2 w-[30%] text-light-100 dark:text-white !important;
   }
   .file-details-value {
     @apply subtitle-2 flex-1 !important;
@@ -312,6 +312,33 @@
 
   .share-wrapper {
     @apply !mt-2 space-y-2 !important;
+  }
+
+  .file-name-marquee {
+    @apply overflow-hidden relative;
+  }
+
+  .marquee-content {
+    @apply inline-flex;
+    animation: marquee 15s linear infinite;
+    animation-play-state: paused;
+  }
+
+  .marquee-content span:first-child {
+    padding-right: 2rem;
+  }
+
+  .file-name-marquee:hover .marquee-content {
+    animation-play-state: running;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
   .share-input-field {
     @apply body-2 shad-no-focus h-[52px] w-full rounded-full border px-4 shadow-drop-1 !important;
@@ -373,13 +400,13 @@
     @apply primary-btn h-[52px] gap-2 px-10 shadow-drop-1 !important;
   }
   .uploader-preview-list {
-    @apply fixed bottom-10 right-10 z-50 flex size-full h-fit max-w-[480px] flex-col gap-3 rounded-[20px] bg-white p-7 shadow-drop-3 !important;
+    @apply fixed bottom-10 right-10 z-50 flex size-full h-fit max-w-[480px] flex-col gap-3 rounded-[20px] bg-white dark:bg-dark-200 dark:border dark:border-light-100/20 p-7 shadow-drop-3 !important;
   }
   .uploader-preview-item {
-    @apply flex items-center justify-between  gap-3 rounded-xl p-3 shadow-drop-3 !important;
+    @apply flex items-center justify-between gap-3 rounded-xl bg-white dark:bg-dark-100 dark:border dark:border-light-100/20 p-3 shadow-drop-3 !important;
   }
   .preview-item-name {
-    @apply subtitle-2 mb-2 line-clamp-1 max-w-[300px] !important;
+    @apply subtitle-2 mb-2 line-clamp-1 max-w-[300px] text-light-100 dark:text-white !important;
   }
 
   .error-toast {
