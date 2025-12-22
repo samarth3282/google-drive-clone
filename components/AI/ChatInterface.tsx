@@ -230,11 +230,11 @@ export function ChatInterface() {
                                                     li: ({ ...props }: React.HTMLAttributes<HTMLLIElement>) => <li className="leading-relaxed" {...props} />,
                                                     p: ({ ...props }: React.HTMLAttributes<HTMLParagraphElement>) => <p className="leading-relaxed" {...props} />,
                                                     a: ({ ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => <a className="text-brand underline hover:text-brand-100" target="_blank" rel="noopener noreferrer" {...props} />,
-                                                    strong: ({ ...props }: React.HTMLAttributes<HTMLElement>) => <strong className="font-semibold text-slate-900" {...props} />,
+                                                    strong: ({ ...props }: React.HTMLAttributes<HTMLElement>) => <strong className="font-semibold text-slate-900 dark:text-white" {...props} />,
                                                     code: ({ inline, ...props }: React.HTMLAttributes<HTMLElement> & { inline?: boolean }) => 
                                                         inline ? 
-                                                        <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-slate-800" {...props} /> :
-                                                        <code className="block overflow-x-auto rounded bg-slate-100 p-2 font-mono text-xs" {...props} />
+                                                        <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-slate-800 dark:bg-dark-100 dark:text-white" {...props} /> :
+                                                        <code className="block overflow-x-auto rounded bg-slate-100 p-2 font-mono text-xs text-slate-800 dark:bg-dark-100 dark:text-white" {...props} />
                                                 }}
                                             >
                                                 {m.content}
@@ -251,7 +251,7 @@ export function ChatInterface() {
                         {loading && streamingContent && (
                             <div className="flex justify-start">
                                 <div className="flex max-w-[85%] flex-col gap-1">
-                                    <div className="rounded-2xl rounded-bl-md border border-slate-200 bg-white p-3 text-sm text-slate-800 shadow-sm dark:border-light-100/20 dark:bg-dark-200 dark:text-white">
+                                    <div className="rounded-2xl rounded-bl-md border border-slate-200 bg-white p-3 text-sm text-slate-800 shadow-sm dark:border-light-100/20  dark:bg-dark-200 dark:text-white">
                                         <ReactMarkdown
                                             remarkPlugins={[remarkGfm]}
                                             components={{
@@ -260,7 +260,7 @@ export function ChatInterface() {
                                                 li: ({ ...props }: React.HTMLAttributes<HTMLLIElement>) => <li className="leading-relaxed" {...props} />,
                                                 p: ({ ...props }: React.HTMLAttributes<HTMLParagraphElement>) => <p className="leading-relaxed" {...props} />,
                                                 a: ({ ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => <a className="text-brand underline hover:text-brand-100" target="_blank" rel="noopener noreferrer" {...props} />,
-                                                strong: ({ ...props }: React.HTMLAttributes<HTMLElement>) => <strong className="font-semibold text-slate-900" {...props} />,
+                                                strong: ({ ...props }: React.HTMLAttributes<HTMLElement>) => <strong className="font-semibold text-slate-900 dark:text-white" {...props} />,
                                             }}
                                         >
                                             {streamingContent}

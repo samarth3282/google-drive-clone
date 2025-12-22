@@ -31,7 +31,19 @@ BUCKET_ID = os.getenv("NEXT_PUBLIC_APPWRITE_BUCKET")
 def search_files(search_text: str = None, types: List[str] = None, limit: int = None):
     """
     Search for files by name or type.
-    Use this when the user asks specifically to find files (e.g. "Find my invoices").
+    Use this when the user asks specifically to find files (e.g. "Find my invoices" or "Find my PDFs").
+    
+    IMPORTANT: File types in the database are:
+    - "document" (includes: pdf, doc, docx, txt, xls, xlsx, csv, etc.)
+    - "image" (includes: jpg, jpeg, png, gif, bmp, svg, webp)
+    - "video" (includes: mp4, avi, mov, mkv, webm)
+    - "audio" (includes: mp3, wav, ogg, flac)
+    - "other" (any other file type)
+    
+    To find PDF files specifically, use types=["document"] AND search_text=".pdf"
+    To find images, use types=["image"]
+    To find specific file extensions, include the extension in search_text (e.g. ".xlsx" or ".docx")
+    
     output format: "Name: ..., ID: ..., BucketFileID: ..., Type: ..., Size: ..."
     """
     # Get current user context

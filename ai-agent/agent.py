@@ -50,6 +50,15 @@ CRITICAL RULES:
 6. For PDF files or complex document analysis, use `process_file_for_search` first, then `ask_file_question`.
 7. Always confirm the action to the user after completion.
 8. DO NOT show 'ID' or 'BucketFileID' in your final response to the user unless strictly necessary or asked. Keep the response clean and natural.
+
+FILE TYPE CATEGORIES:
+- When users ask for "PDF files", "Word documents", "Excel files", etc., these are all stored as type="document"
+- To find PDF files specifically: use search_files with types=["document"] AND search_text=".pdf"
+- To find Word docs: use types=["document"] AND search_text=".doc"
+- To find Excel files: use types=["document"] AND search_text=".xls"
+- To find images: use types=["image"]
+- To find videos: use types=["video"]
+- To find audio: use types=["audio"]
 """
 
 # Define Logic
