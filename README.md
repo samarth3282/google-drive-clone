@@ -10,9 +10,9 @@
 
 **A modern, production-ready Google Drive clone with AI-powered file management capabilities**
 
-[Live Demo](#) • [Documentation](./DEPLOYMENT.md) • [Quick Start](./README-QUICKSTART.md)
+[🎥 Watch Demo Video](#-demo-video) • [Live Demo](https://store-it-sp.vercel.app) • [Documentation](./DEPLOYMENT.md) • [Quick Start](./README-QUICKSTART.md)
 
-Built by [Samarth Patel](https://github.com/samarth3282) & [Parth Goswami](#)
+Built by [Samarth Patel](https://github.com/samarth3282) & [Parth Goswami](https://github.com/ParthGoswami13)
 
 </div>
 
@@ -20,6 +20,7 @@ Built by [Samarth Patel](https://github.com/samarth3282) & [Parth Goswami](#)
 
 ## 📋 Table of Contents
 
+- [Demo Video](#-demo-video)
 - [Overview](#-overview)
 - [Key Features](#-key-features)
 - [Tech Stack](#-tech-stack)
@@ -28,7 +29,20 @@ Built by [Samarth Patel](https://github.com/samarth3282) & [Parth Goswami](#)
 - [AI Agent Capabilities](#-ai-agent-capabilities)
 - [Deployment](#-deployment)
 - [Contributing](#-contributing)
-- [License](#-license)
+
+---
+
+## 🎥 Demo Video
+
+<div align="center">
+
+https://github.com/user-attachments/assets/YOUR-VIDEO-ID-HERE
+
+**Watch the complete walkthrough showcasing all features including AI-powered file management, RAG document analysis, and seamless UI/UX**
+
+*Alternative: [Download Video](./demo/storeit-demo.mp4)*
+
+</div>
 
 ---
 
@@ -322,19 +336,21 @@ AI: [Provides accurate answers based on document content]
 
 ---
 
-## 🎨 Screenshots
+## 🎨 Screenshots & Demo
+
+> 💡 **Tip**: Watch the [full demo video](#-demo-video) at the top to see all features in action!
 
 ### Dashboard
-![Dashboard](#)
+![Dashboard](./demo/screenshots/dashboard.png)
 
 ### AI Chat Interface
-![AI Chat](#)
+![AI Chat](./demo/screenshots/ai-chat.png)
 
 ### File Management
-![File Management](#)
+![File Management](./demo/screenshots/file-management.png)
 
 ### Theme Customization
-![Themes](#)
+![Themes](./demo/screenshots/themes.png)
 
 ---
 
