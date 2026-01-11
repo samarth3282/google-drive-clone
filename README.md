@@ -36,11 +36,9 @@ Built by [Samarth Patel](https://github.com/samarth3282) & [Parth Goswami](https
 
 <div align="center">
 
-<div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe width="560" height="315" src="https://www.youtube.com/embed/pbVSrdD3XEI?si=h599saoeMfiHmAIv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+[![StoreIt Demo Video](https://img.youtube.com/vi/pbVSrdD3XEI/maxresdefault.jpg)](https://www.youtube.com/watch?v=pbVSrdD3XEI)
 
 **Watch the complete walkthrough showcasing all features including AI-powered file management, RAG document analysis, and seamless UI/UX**
-
-*Direct link: [View on Streamable](https://streamable.com/q429my)*
 
 </div>
 
