@@ -36,11 +36,11 @@ Built by [Samarth Patel](https://github.com/samarth3282) & [Parth Goswami](https
 
 <div align="center">
 
-https://github.com/user-attachments/assets/YOUR-VIDEO-ID-HERE
+<div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/q429my?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
 
 **Watch the complete walkthrough showcasing all features including AI-powered file management, RAG document analysis, and seamless UI/UX**
 
-*Alternative: [Download Video](./demo/storeit-demo.mp4)*
+*Direct link: [View on Streamable](https://streamable.com/q429my)*
 
 </div>
 
