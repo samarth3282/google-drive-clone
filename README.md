@@ -10,7 +10,7 @@
 
 **A modern, production-ready Google Drive clone with AI-powered file management capabilities**
 
-[🎥 Watch Demo Video](#-demo-video) • [Live Demo](https://store-it-sp.vercel.app) • [Documentation](./DEPLOYMENT.md) • [Quick Start](./README-QUICKSTART.md)
+[🎥 Watch Demo Video](#-demo-video) • [Live Demo](https://store-it-sp.vercel.app) • [Documentation](#-overview) • [Quick Start](./README-QUICKSTART.md)
 
 Built by [Samarth Patel](https://github.com/samarth3282) & [Parth Goswami](https://github.com/ParthGoswami13)
 
@@ -334,24 +334,6 @@ AI: [Provides accurate answers based on document content]
 
 ---
 
-## 🎨 Screenshots & Demo
-
-> 💡 **Tip**: Watch the [full demo video](#-demo-video) at the top to see all features in action!
-
-### Dashboard
-![Dashboard](./demo/screenshots/dashboard.png)
-
-### AI Chat Interface
-![AI Chat](./demo/screenshots/ai-chat.png)
-
-### File Management
-![File Management](./demo/screenshots/file-management.png)
-
-### Theme Customization
-![Themes](./demo/screenshots/themes.png)
-
----
-
 ## 📦 Deployment
 
 ### Production Deployment
@@ -474,12 +456,6 @@ For more troubleshooting tips, see [DEPLOYMENT.md](./DEPLOYMENT.md)
 
 ---
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
 ## 👥 Authors
 
 **Samarth Patel**
@@ -487,8 +463,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - LinkedIn: [Samarth Patel](https://www.linkedin.com/in/samarthnimeshkumarpatel/)
 
 **Parth Goswami**
-- GitHub: [@parthgoswami]()
-- LinkedIn: [Parth Goswami]()
+- GitHub: [@parthgoswami](https://github.com/ParthGoswami13)
+- LinkedIn: [Parth Goswami](https://www.linkedin.com/in/parth-goswami-924aa42b6/)
 
 ---
 
